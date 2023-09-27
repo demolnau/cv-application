@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+//import uniqid from 'uniqid'
+
 function Education({handleEducation}) {
-  
     const initialState = {
         schoolName: '',
         schoolLocation: '' ,
@@ -8,6 +9,7 @@ function Education({handleEducation}) {
         fieldOfStudy:'',
         studyStartDate: '',
         studyEndDate: '',
+        id:''
     }
 
   const [ed, addEducation] = useState(initialState)
@@ -30,23 +32,25 @@ function Education({handleEducation}) {
     <>
  <div id="EducationForm" className='form-section'>
     <h2 id="educationFormHeader">Education</h2>
-    <label for='schoolName'><b>School</b></label>
+    <label htmlFor='schoolName'><b>School</b></label>
       <input 
         type="text"
         name = "schoolName"
         value = {ed.schoolName}
         onChange={handleChange}
         placeholder='School'
+        id='schoolName'
       />
-      <label for='schoolLocation'><b>Location</b></label>
+      <label htmlFor='schoolLocation'><b>Location</b></label>
             <input 
         type="text"
         name = "schoolLocation"
         value = {ed.schoolLocation}
         onChange={handleChange}
         placeholder='Location'
+        id='schoolLocation'
       />
-      <label for='degree'><b>Degree</b></label>
+      <label htmlFor='degree'><b>Degree</b></label>
       <input 
         type = "text"
         name = "degree"
@@ -55,7 +59,7 @@ function Education({handleEducation}) {
         placeholder='Degree'
         id="degree"
       />
-      <label for='fieldOfStudy'><b>Area of Study</b></label>
+      <label htmlFor='areaOfStudy'><b>Area of Study</b></label>
       <input
         type="text"
         name = "fieldOfStudy"
@@ -64,25 +68,25 @@ function Education({handleEducation}) {
         placeholder='Area of Study'
         id="areaOfStudy"
         />
-        <label for='studyStartDate'><b>Start Date</b></label>
+        <label htmlFor='studyStartDate'><b>Start Date</b></label>
       <input
-        type = "date"
+        type = "text"
         name = "studyStartDate"
         value = {ed.studyStartDate}
         onChange={handleChange}
-        placeholder='Start date'
-        id = "startDate"
+        placeholder='Start date year'
+        id = "studyStartDate"
       />
-      <label for='studyEndDate'><b>End Date</b></label>
+      <label htmlFor='studyEndDate'><b>End Date</b></label>
       <input
-        type = "date"
+        type = "text"
         name="studyEndDate"
         value = {ed.studyEndDate}
         onChange={handleChange}
-        placeholder='End date'
-        id="endDate"
+        placeholder='End date year'
+        id="studyEndDate"
       />
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>Add Education</button>
     </div>
     
     

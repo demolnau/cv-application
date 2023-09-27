@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+//import uniqid from 'uniqid'
 function Experience({handleExp}) {
   const [exp, setExperience] = useState({
     jobTitle:'',
@@ -7,7 +7,8 @@ function Experience({handleExp}) {
     workLocation:'',
     tasks:'',
     startWorkDate:'',
-    endWorkDate:''
+    endWorkDate:'',
+    id:''
   })
 
   const handleChange = (e) => {
@@ -25,16 +26,16 @@ function Experience({handleExp}) {
     <>
     <div id="ExperienceForm" className='form-section'>
       <h2 id='experienceFormHeader'>Experience</h2>
-        <label for='jobTitle'><b>Job Title</b></label>
+        <label htmlFor='jobTitle'><b>Job Title</b></label>
         <input
             type='text'
             name='jobTitle'
             value={exp.jobTitle}
             onChange={handleChange}
             placeholder='Job Title'
-            id='job-title'
+            id='jobTitle'
         />
-        <label for='Company'><b>Company</b></label>
+        <label htmlFor='company'><b>Company</b></label>
         <input 
             type = "text"
             name = "company"
@@ -43,16 +44,16 @@ function Experience({handleExp}) {
             placeholder='Company'
             id="company"
         />
-        <label for='workLocation'><b>Location</b></label>
+        <label htmlFor='workLocation'><b>Location</b></label>
         <input
             type='text'
             name='workLocation'
             value={exp.workLocation}
             onChange={handleChange}
             placeholder='Location'
-            id='work-location'
+            id='workLocation'
         />
-        <label for='tasks'><b>Description</b></label>
+        <label htmlFor='tasks'><b>Description</b></label>
         <input
             type = "text"
             name = "tasks"
@@ -61,22 +62,22 @@ function Experience({handleExp}) {
             placeholder='tasks'
             id="tasks"
         />
-        <label for='startDate'><b>Start Date</b></label>
+        <label htmlFor='startDate'><b>Start Date</b></label>
                 <input
-            type = "date"
+            type = "text"
             name = "startDate"
             value = {exp.startWorkDate}
             onChange={handleChange}
-            placeholder='Start date'
+            placeholder='Start date year'
             id = "startDate"
         />
-        <label for='endDate'><b>End Date</b></label>
+        <label htmlFor='endDate'><b>End Date</b></label>
         <input
-            type = "date"
+            type = "text"
             name="endDate"
             value = {exp.endWorkDate}
             onChange={handleChange}
-            placeholder='End date'
+            placeholder='End date year'
             id="endDate"
         />
         <button onClick={handleSubmit}>Submit</button>

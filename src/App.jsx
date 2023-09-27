@@ -7,8 +7,10 @@ import Education from './components/Education.jsx'
 import Experience from './components/Experience.jsx'
 //import CVform from './components/CVform.jsx'
 import sampleData from './components/sample_data.js'
+import uniqid from "uniqid";
 
 const RenderInfo = function({info}){
+  console.log("Rendering Contact Information Now")
   return(
     <div>
       <h1>{info.userName}</h1>
@@ -21,35 +23,80 @@ const RenderInfo = function({info}){
   )
 }
 
-const RenderEd = function({ed}){
-  
+const SingleEducationEvent=function(props){
+  return(
+    <div id='singleEd'>
+          <div id="left">
+            <div id="range_of_ed">{props.education.studyStartDate}-{props.education.studyEndDate}</div>
+            <div id="location">{props.education.schoolLocation}</div>
+          </div>
+
+          <div id='right'>
+            <div id="school"><b>{props.education.schoolName}</b></div>
+            <div id="degree">{props.education.degree} in {props.education.fieldOfStudy}</div>
+          </div>
+    </div>
+  )
+}
+const EducationList=function(props){
   return(
     <div id="educationDetails">
-      <div id="left">
-        <div id="range_of_ed">{ed.studyStartDate}-{ed.studyEndDate}</div>
-        <div id="location">{ed.schoolLocation}</div>
-      </div>
-      <div id='right'>
-        <div id="school"><b>{ed.schoolName}</b></div>
-        <div id="degree">{ed.degree} in {ed.fieldOfStudy}</div>
-        
-      </div>
+      {
+        props.ed.map((education) => {
+          return <SingleEducationEvent key={uniqid()} education={education}/>
+        }
+        )
+      }
     </div>
+  )
+}
+const RenderEd = function({ed}){
+  console.log("Rendering Education Section Now")
+  //console.log(ed)
+  return(
+    <div id="EducationSection" className="section">
+    <h2>Education</h2>
+    <EducationList ed={ed}/>
+  </div>
+    
+  )
+}
+
+
+const SingleExperience=function(props){
+  return(
+    <div id='singleExp'>
+          <div id="left">
+            <div>{props.singleExp.startWorkDate}-{props.singleExp.endWorkDate}</div>
+            <div>{props.singleExp.workLocation}</div>
+          </div>
+          <div id='right'>
+            <div><b>{props.singleExp.company}</b></div>
+            <div>{props.singleExp.jobTitle}</div>
+            <div>{props.singleExp.tasks}</div>
+          </div>
+    </div>
+  )
+}
+const ExperienceList=function(props){
+  return(
+    <div id="expDetails">
+      {props.exp.map((singleExp) => 
+      {return <SingleExperience key={uniqid()} singleExp={singleExp}/>
+      })}
+      </div>
   )
 }
 
 const RenderExp=function({exp}){
+
+  exp.map((singleExp)=>{
+    console.log(singleExp)
+  })
   return(
-    <div id="expDetails">
-      <div id="left">
-        <div>{exp.startWorkDate}-{exp.endWorkDate}</div>
-        <div>{exp.workLocation}</div>
-      </div>
-      <div id='right'>
-        <div><b>{exp.company}</b></div>
-        <div>{exp.jobTitle}</div>
-        <div>{exp.tasks}</div>
-      </div>
+    <div id="ExperienceSection" className="section">
+    <h2>Work Experience</h2>
+    <ExperienceList exp={exp}/>
     </div>
   )
 }
@@ -63,8 +110,8 @@ const RenderExp=function({exp}){
 function App() {
   const [count, setCount] = useState(0)
   const [info, setInfo] = useState(sampleData.contactInformation)
-  const [ed,setEd] = useState(sampleData.education)
-  const [exp, setExp]=useState(sampleData.experience)
+  const [ed,setEd] = useState(sampleData.sections.educations)
+  const [exp, setExp]=useState(sampleData.sections.experiences)
   
 
 
@@ -81,13 +128,36 @@ function App() {
                   startDate: ${ed.startDate} \n 
                   endDate: ${ed.endDate}`
     )
-    setEd(ed);
+    setEd((previousEducationList)=>{
+      return([...previousEducationList,{
+        schoolName: ed.schoolName,
+        schoolLocation: ed.schoolLocation,
+        degree: ed.degree,
+        fieldOfStudy: ed.fieldOfStudy,
+        studyStartDate: ed.studyStartDate,
+        studyEndDate: ed.studyEndDate,
+        id: uniqid()
+      }
+      ])
+    });
   }
 
   const getExp = function(exp){
     console.log("Work Experience Added");
-    setExp(exp);
-   
+    console.log(exp)
+    setExp((previousExperienceList)=>{
+      return([...previousExperienceList,{
+        jobTitle: exp.jobTitle,
+        company: exp.company,
+        workLocation: exp.workLocation,
+        tasks: exp.tasks,
+        startWorkDate: exp.startWorkDate,
+        endWorkDate: exp.endWorkDate,
+        id:uniqid(),
+      }]
+    )
+  });
+    
   }
 
   return (
@@ -131,14 +201,9 @@ function App() {
             <RenderInfo info={info}
             />
           </div>
-          <div id="EducationSection" className="section">
-            <h2>Education</h2>
-            <RenderEd ed = {ed}/>
-          </div>
-          <div id="ExperienceSection" className="section">
-            <h2>Work Experience</h2>
-            <RenderExp exp={exp}/>
-          </div>
+          <RenderEd ed = {ed}/>
+
+          <RenderExp exp={exp}/>
         </div>
       </div>
     </div>

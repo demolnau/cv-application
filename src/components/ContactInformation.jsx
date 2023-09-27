@@ -1,10 +1,10 @@
 import { useState } from "react";
 import React from 'react';
 
-function clearAllInputs() {
-    var allInputs = document.querySelectorAll('input');
-    allInputs.forEach(singleInput => singleInput.value = '');
-}
+// function clearAllInputs() {
+//     var allInputs = document.querySelectorAll('input');
+//     allInputs.forEach(singleInput => singleInput.value = '');
+// }
    
 
 function ContactInformation({handleInformation}) {
@@ -23,7 +23,7 @@ function ContactInformation({handleInformation}) {
   const handleSubmit= function(e){
     e.preventDefault();
     handleInformation(info);
-    clearAllInputs();
+    //clearAllInputs();
 }
 
 
@@ -35,7 +35,7 @@ function ContactInformation({handleInformation}) {
      <div className='form-section' id="ContactForm">
         <h2 id="contactFormHeader">Contact Information</h2>
         
-        <label for='userName'><b>Name</b></label>
+        <label htmlFor='userName'><b>Name</b></label>
         <input
           type="text"
           name="userName"
@@ -44,7 +44,7 @@ function ContactInformation({handleInformation}) {
           placeholder = "Enter Full Name"
           id = "userName"
         />
-        <label for='address'><b>Location</b></label>
+        <label htmlFor='address'><b>Location</b></label>
         <input 
           type="text"
           name = "address"
@@ -53,7 +53,7 @@ function ContactInformation({handleInformation}) {
           placeholder="City, Country"
           id="address"
         />
-        <label for='phone'><b>Phone number</b></label>
+        <label htmlFor='phone'><b>Phone number</b></label>
         <input 
           type = "text"
           name = "phone"
@@ -62,7 +62,7 @@ function ContactInformation({handleInformation}) {
           placeholder="Phone number"
           id="phone"
         />
-        <label for='email'><b>Email</b></label>
+        <label htmlFor='email'><b>Email</b></label>
         <input 
           type= "email"
           name = "email"
@@ -71,8 +71,6 @@ function ContactInformation({handleInformation}) {
           placeholder="Email"
           id="email"
         /> 
-        
-        
     <button onClick={handleSubmit}>Submit</button>
     </div>
     

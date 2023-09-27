@@ -91,17 +91,21 @@
 }
 .section{
   margin:10px 30px;
-  
 }
 
 #educationDetails, #expDetails{
   display: flex;
+  flex-direction: column;
   justify-content: left;
   text-align: left;
-  
 }
 #left,  #right{
   display: flex;
   flex-direction: column;
   margin-right: 30px;
+}
+
+#singleExp, #singleEd{
+  display: flex;
+  
 }
