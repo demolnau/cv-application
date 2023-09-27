@@ -24,7 +24,7 @@ const sampleData = {
                 degree: 'MS',
                 fieldOfStudy:'Bioinformatics',
                 studyStartDate: '2016',
-                studyEndDate: 'present',
+                studyEndDate: '2024',
                 id: uniqid(),
             }
         ],

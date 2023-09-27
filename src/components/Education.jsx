@@ -70,20 +70,20 @@ function Education({handleEducation}) {
         />
         <label htmlFor='studyStartDate'><b>Start Date</b></label>
       <input
-        type = "text"
+        type = "number"
         name = "studyStartDate"
         value = {ed.studyStartDate}
         onChange={handleChange}
-        placeholder='Start date year'
+        placeholder='Start year'
         id = "studyStartDate"
       />
       <label htmlFor='studyEndDate'><b>End Date</b></label>
       <input
-        type = "text"
+        type = "number"
         name="studyEndDate"
         value = {ed.studyEndDate}
         onChange={handleChange}
-        placeholder='End date year'
+        placeholder='End year'
         id="studyEndDate"
       />
       <button onClick={handleSubmit}>Add Education</button>

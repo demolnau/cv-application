@@ -63,21 +63,21 @@ function Experience({handleExp}) {
             id="tasks"
         />
         <label htmlFor='startDate'><b>Start Date</b></label>
-                <input
-            type = "text"
+            <input
+            type = "number"
             name = "startDate"
             value = {exp.startWorkDate}
             onChange={handleChange}
-            placeholder='Start date year'
+            placeholder='Start year'
             id = "startDate"
         />
         <label htmlFor='endDate'><b>End Date</b></label>
         <input
-            type = "text"
+            type = "number"
             name="endDate"
             value = {exp.endWorkDate}
             onChange={handleChange}
-            placeholder='End date year'
+            placeholder='End year'
             id="endDate"
         />
         <button onClick={handleSubmit}>Submit</button>
