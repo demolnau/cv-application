@@ -4,6 +4,26 @@
   padding: 2rem;
   text-align: center;
 }
+#cv_generator{
+  display: flex;
+  justify-content: space-around;
+}
+
+#col-1 {
+  display: flex;
+  flex-direction: column;
+  background-color: #282828;
+  width: 45%;
+}
+
+#col-2 {
+  display: flex;
+  flex-direction: column;
+  background-color: #FAF9F6;
+  color: #282828;
+  width: 45%;
+
+}
 
 .logo {
   height: 6em;
@@ -39,4 +59,49 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.form-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+.form-section label{
+  text-align: left;
+}
+
+#generatedCV h2{
+  display: flex;
+  justify-content: center;
+  background-color: #D2D2CF;
+}
+
+#ContactSection{
+  background-color: #545454;
+  color: #ffffff;
+  padding:10px
+}
+
+#ContactSection #info_details{
+  display: flex;
+  justify-content: space-around;
+}
+.section{
+  margin:10px 30px;
+  
+}
+
+#educationDetails, #expDetails{
+  display: flex;
+  justify-content: left;
+  text-align: left;
+  
+}
+#left,  #right{
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
 }
