@@ -10,7 +10,7 @@ function Experience({handleExp}) {
     endWorkDate:'',
     id:''
   }
-  
+
   const [exp, setExperience] = useState(initialState)
 
   const handleChange = (e) => {
@@ -88,11 +88,11 @@ function Experience({handleExp}) {
             placeholder='End year'
             id="endDate"
         />
-        <button onClick={clearInput}>Clear Input</button>
-        <button onClick={handleSubmit}>Add Experience</button>
+
         </div>
 
-        
+        <button onClick={clearInput}>Clear Input</button>
+        <button onClick={handleSubmit}>Add Experience</button>
     </>
     
 

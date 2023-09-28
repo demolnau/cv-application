@@ -86,10 +86,11 @@ function Education({handleEducation}) {
         placeholder='End year'
         id="studyEndDate"
       />
-      <button onClick={clearInput}>Clear Input</button>
-      <button onClick={handleSubmit}>Add Education</button>
+
     </div>
     
+    <button onClick={clearInput}>Clear Input</button>
+    <button onClick={handleSubmit}>Add Education</button>
     
     </>
    

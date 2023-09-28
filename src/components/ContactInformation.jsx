@@ -68,10 +68,10 @@ function ContactInformation({handleInformation}) {
           placeholder="Email"
           id="email"
         /> 
+
+    </div>
     <button onClick={clearInput}>Clear Input</button>
     <button onClick={handleSubmit}>Submit</button>
-    </div>
-    
     </>
    
   ) 
