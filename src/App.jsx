@@ -11,34 +11,62 @@ import RenderInfo from './components/RenderInfo.jsx'
 import RenderEd from './RenderEd.jsx'
 import RenderExp from './components/RenderExp.jsx'
 
-
-
-// const clearInput = function(){
-//   var allInputs = document.querySelectorAll('input')
-//   allInputs.forEach(singleInput => singleInput.value = '')
-// }
-
-
 function App() {
+  const info_initialState ={
+    userName:  '',
+      address: '',
+      phone: '',
+      email: '',
+  }
+  const education_initialState=[
+        { schoolName: '',
+          schoolLocation: '' ,
+          degree: '',
+          fieldOfStudy:'',
+          studyStartDate: '',
+          studyEndDate: '',
+          id:''
+        }
+      ]
+
+  const exp_initialState=
+      [
+        {
+          jobTitle:'',
+          company:'',
+          workLocation:'',
+          tasks:'',
+          startWorkDate:'',
+          endWorkDate:'',
+          id:''
+        }
+      ]
+
+
   const [info, setInfo] = useState(sampleData.contactInformation)
   const [ed,setEd] = useState(sampleData.sections.educations)
   const [exp, setExp]=useState(sampleData.sections.experiences)
   
-
+  const clearForm=function(){
+    setInfo(info_initialState)
+    setEd(education_initialState)
+    setExp(exp_initialState)
+}
 
   const getInfo = function(info) {
-    console.log(`name: ${info.userName} \n address: ${info.address} \n phone: ${info.phone} \n email: ${info.email}`);
+    //console.log(`name: ${info.userName} \n address: ${info.address} \n phone: ${info.phone} \n email: ${info.email}`);
     setInfo(info);
   }
 
   const getEd = function(ed){
-    console.log("Education added!")
-    console.log(`school: ${ed.schoolName} \n 
-                  degree: ${ed.degree} \n
-                  field of study: ${ed.fieldOfStudy} \n 
-                  startDate: ${ed.startDate} \n 
-                  endDate: ${ed.endDate}`
-    )
+    // console.log("Education added!")
+    // console.log(`school: ${ed.schoolName} \n 
+    //               degree: ${ed.degree} \n
+    //               field of study: ${ed.fieldOfStudy} \n 
+    //               startDate: ${ed.startDate} \n 
+    //               endDate: ${ed.endDate}`
+    // )
+
     setEd((previousEducationList)=>{
       return([...previousEducationList,{
         schoolName: ed.schoolName,
@@ -53,9 +81,9 @@ function App() {
     });
   }
 
+ 
   const getExp = function(exp){
-    console.log("Work Experience Added");
-    console.log(exp)
+    //console.log("Work Experience Added");
     setExp((previousExperienceList)=>{
       return([...previousExperienceList,{
         jobTitle: exp.jobTitle,
@@ -68,7 +96,16 @@ function App() {
       }]
     )
   });
-    
+  }
+
+  const resetInfoSection= function(){
+    setInfo(info_initialState)
+  }
+  const resetEdSection = function(){
+    setEd(education_initialState)
+  }
+  const resetExpSection = function(){
+    setExp(exp_initialState)
   }
 
   return (
@@ -76,15 +113,19 @@ function App() {
     <div id='cv_generator'>
       <div id='col-1'>
       <h1>CV Generator</h1>
+      <button onClick={clearForm}>Reset</button>
         <ContactInformation
             handleInformation={getInfo}
         />
+        <button onClick={resetInfoSection}>Reset Information Section</button>
         <Education
           handleEducation={getEd}
           />
+        <button onClick={resetEdSection}>Reset Education Section</button>
         <Experience
           handleExp={getExp}
         />
+        <button onClick={resetExpSection}>Reset Experience Section</button>
       </div>
       <div id='col-2'>
         <div id="generatedCV">

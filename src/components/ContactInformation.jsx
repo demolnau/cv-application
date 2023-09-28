@@ -1,19 +1,17 @@
 import { useState } from "react";
 import React from 'react';
 
-// function clearAllInputs() {
-//     var allInputs = document.querySelectorAll('input');
-//     allInputs.forEach(singleInput => singleInput.value = '');
-// }
    
 
 function ContactInformation({handleInformation}) {
-  const [info, setInfo]=useState({
+  const initialState= {
     userName:  '',
     address: '',
     phone: '',
     email: '',
-  })
+  }
+
+  const [info, setInfo]=useState(initialState)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +21,11 @@ function ContactInformation({handleInformation}) {
   const handleSubmit= function(e){
     e.preventDefault();
     handleInformation(info);
-    //clearAllInputs();
-}
+  }
 
-
-
-  
+  const clearInput=function(){
+    setInfo(initialState)
+  }
 
   return (
     <>
@@ -71,6 +68,7 @@ function ContactInformation({handleInformation}) {
           placeholder="Email"
           id="email"
         /> 
+    <button onClick={clearInput}>Clear Input</button>
     <button onClick={handleSubmit}>Submit</button>
     </div>
     

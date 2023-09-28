@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 //import uniqid from 'uniqid'
 function Experience({handleExp}) {
-  const [exp, setExperience] = useState({
+  const initialState = {
     jobTitle:'',
     company:'',
     workLocation:'',
@@ -9,7 +9,9 @@ function Experience({handleExp}) {
     startWorkDate:'',
     endWorkDate:'',
     id:''
-  })
+  }
+  
+  const [exp, setExperience] = useState(initialState)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +22,12 @@ function Experience({handleExp}) {
     e.preventDefault();
     handleExp(exp);
 }
+
+  const clearInput = function(e){
+    e.preventDefault();
+    setExperience(initialState)
+  }
+
 
   return (
     //<form onSubmit={handleSubmit}>
@@ -80,7 +88,8 @@ function Experience({handleExp}) {
             placeholder='End year'
             id="endDate"
         />
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={clearInput}>Clear Input</button>
+        <button onClick={handleSubmit}>Add Experience</button>
         </div>
 
         

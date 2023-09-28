@@ -23,11 +23,11 @@ function Education({handleEducation}) {
     e.preventDefault();
     handleEducation(ed);
     }
+    const clearInput = function(e){
+      e.preventDefault();
+      addEducation(initialState)
+    }
 
-    // const handleClear = function(e){
-    //     addEducation(initialState)
-    // }
-    // <button onClick={handleClear}>Clear</button>
   return(
     <>
  <div id="EducationForm" className='form-section'>
@@ -86,6 +86,7 @@ function Education({handleEducation}) {
         placeholder='End year'
         id="studyEndDate"
       />
+      <button onClick={clearInput}>Clear Input</button>
       <button onClick={handleSubmit}>Add Education</button>
     </div>
     
